@@ -5,6 +5,7 @@
 #include "QtNetwork/qhostaddress.h"
 #include "QtNetwork/qnetworkinterface.h"
 #include "QtNetwork"
+#include "qtextstream.h"
 
 HostConfig::HostConfig(QWidget *parent) :
     QDialog(parent),
@@ -102,11 +103,24 @@ void HostConfig::on_pushButton_3_clicked()
               continue;
           }
 
-          tx->append(line);
+          tx->append(QString("%1").arg(line));
 
        }
-       inputFile.close();
+
     }
+
+    inputFile.close();
+
+    //Saving
+    QFile w1(login);
+    if(w1.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QTextStream stream(&w1);
+        stream << tx->toPlainText();
+        w1.flush();
+        w1.close();
+    }
+
 
 
 
@@ -145,12 +159,213 @@ void HostConfig::on_pushButton_3_clicked()
             if(line.contains(tr("server_name:")))
             {
                 tx->append(QString("server_name: %1").arg(ui->servername->text()));
+                continue;
             }
 
-            tx->append(line);
+            tx->append(QString("%1").arg(line));
         }
 
-        ui->textEdit->setText(tx->toPlainText());
     }
+
+    inputFile2.close();
+
+    //Saving
+    QFile w2(chars);
+    if(w2.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QTextStream stream(&w2);
+        stream << tx->toPlainText();
+        w2.flush();
+        w2.close();
+    }
+
+    //Map
+
+    tx->clear();
+    QString map = root_path;
+    map.append("/conf/map_athena.conf");
+    QFile input3(map);
+    if(input3.open(QIODevice::ReadOnly))
+    {
+        QTextStream in(&input3);
+        while(!in.atEnd())
+        {
+            QString line = in.readLine();
+
+            if(line.contains(tr("char_ip:")))
+            {
+                tx->append(QString("char_ip: %1").arg(ui->ipv6->text()));
+                continue;
+            }
+            if(line.contains(tr("char_port:")))
+            {
+                tx->append(QString("char_port: %1").arg(ui->spinBox_2->value()));
+                continue;
+            }
+            if(line.contains(tr("map_ip:")))
+            {
+                tx->append(QString("map_ip: %1").arg(ui->ipv6->text()));
+                continue;
+            }
+            if(line.contains(tr("map_port:")))
+            {
+                tx->append(QString("map_port: %1").arg(ui->spinBox_3->value()));
+                continue;
+            }
+
+            tx->append(QString("%1").arg(line));
+        }
+    }
+    input3.close();
+
+
+
+    //Saving
+    QFile w3(map);
+    if(w3.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QTextStream stream(&w3);
+        stream << tx->toPlainText();
+        w3.flush();
+        w3.close();
+    }
+
+
+    //SQL Setting
+    if(ui->checkBox->checkState() == true)
+    {
+        tx->clear();
+        QString inter = root_path;
+        inter.append("/conf/inter_athena.conf");
+
+        QFile input4(inter);
+        if(input4.open(QIODevice::ReadOnly))
+        {
+            QTextStream in(&input3);
+            while(!in.atEnd())
+            {
+             QString line = in.readLine();
+
+             if(line.contains(tr("login_server_ip:")))
+             {
+                 tx->append(QString("login_server_ip: %1").arg(ui->dbhost->text()));
+                 continue;
+             }
+             if(line.contains(tr("login_server_port:")))
+             {
+                 tx->append(QString("login_server_port: %1").arg(ui->dbport->text()));
+                 continue;
+             }
+             if(line.contains(tr("login_server_id:")))
+             {
+                 tx->append(QString("login_server_id: %1").arg(ui->dbuser->text()));
+                 continue;
+             }
+             if(line.contains(tr("login_server_pw:")))
+             {
+                 tx->append(QString("login_server_pw: %1").arg(ui->dbpass->text()));
+                 continue;
+             }
+             if(line.contains(tr("login_server_db:")))
+             {
+                 tx->append(QString("login_server_db: %1").arg(ui->database->text()));
+                 continue;
+             }
+
+
+
+             if(line.contains(tr("ipban_db_ip:")))
+             {
+                 tx->append(QString("ipban_db_ip: %1").arg(ui->dbhost->text()));
+                 continue;
+             }
+             if(line.contains(tr("ipban_db_port:")))
+             {
+                 tx->append(QString("ipban_db_port: %1").arg(ui->dbport->text()));
+                 continue;
+             }
+             if(line.contains(tr("ipban_db_id:")))
+             {
+                 tx->append(QString("ipban_db_id: %1").arg(ui->dbuser->text()));
+                 continue;
+             }
+             if(line.contains(tr("ipban_db_pw:")))
+             {
+                 tx->append(QString("ipban_db_pw: %1").arg(ui->dbpass->text()));
+                 continue;
+             }
+             if(line.contains(tr("ipban_db_db:")))
+             {
+                 tx->append(QString("ipban_db_db: %1").arg(ui->database->text()));
+                 continue;
+             }
+
+
+             if(line.contains(tr("char_server_ip:")))
+             {
+                 tx->append(QString("char_server_ip: %1").arg(ui->dbhost->text()));
+                 continue;
+             }
+             if(line.contains(tr("char_server_port:")))
+             {
+                 tx->append(QString("char_server_port: %1").arg(ui->dbport->text()));
+                 continue;
+             }
+             if(line.contains(tr("char_server_id:")))
+             {
+                 tx->append(QString("char_server_id: %1").arg(ui->dbuser->text()));
+                 continue;
+             }
+             if(line.contains(tr("char_server_pw:")))
+             {
+                 tx->append(QString("char_server_pw: %1").arg(ui->dbpass->text()));
+                 continue;
+             }
+             if(line.contains(tr("char_server_db:")))
+             {
+                 tx->append(QString("char_server_db: %1").arg(ui->database->text()));
+                 continue;
+             }
+
+
+             if(line.contains(tr("map_server_ip:")))
+             {
+                 tx->append(QString("map_server_ip: %1").arg(ui->dbhost->text()));
+                 continue;
+             }
+             if(line.contains(tr("map_server_port:")))
+             {
+                 tx->append(QString("map_server_port: %1").arg(ui->dbport->text()));
+                 continue;
+             }
+             if(line.contains(tr("map_server_id:")))
+             {
+                 tx->append(QString("map_server_id: %1").arg(ui->dbuser->text()));
+                 continue;
+             }
+             if(line.contains(tr("map_server_pw:")))
+             {
+                 tx->append(QString("map_server_pw: %1").arg(ui->dbpass->text()));
+                 continue;
+             }
+             if(line.contains(tr("map_server_db:")))
+             {
+                 tx->append(QString("map_server_db: %1").arg(ui->database->text()));
+                 continue;
+             }
+
+
+             if(line.contains(tr("use_sql_db:")))
+             {
+                 tx->append(QString("use_sql_db: %1").arg("yes"));
+                 continue;
+             }
+
+            }
+
+        }
+    }
+
+
 
 }
