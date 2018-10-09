@@ -13,6 +13,7 @@ class HostConfig : public QDialog
     
 public:
     explicit HostConfig(QWidget *parent = 0);
+    QString root_path;
     ~HostConfig();
     
 private slots:
