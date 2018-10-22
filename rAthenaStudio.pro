@@ -15,13 +15,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    hostconfig.cpp
+    hostconfig.cpp \
+    databasedump.cpp
 
 HEADERS  += mainwindow.h \
-    hostconfig.h
+    hostconfig.h \
+    databasedump.h
 
 FORMS    += mainwindow.ui \
-    hostconfig.ui
+    hostconfig.ui \
+    databasedump.ui
 
 RESOURCES += \
     data.qrc

@@ -5,6 +5,7 @@
 #include "qmessagebox.h"
 #include "qfiledialog.h"
 
+
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -36,4 +37,11 @@ void MainWindow::on_pushButton_clicked()
 {
     HostConfig *conf = new HostConfig();
     conf->exec();
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    DatabaseDump *db = new DatabaseDump();
+    db->exec();
 }

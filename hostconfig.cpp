@@ -231,6 +231,8 @@ void HostConfig::on_pushButton_3_clicked()
     }
 
 
+
+
     //SQL Setting
     if(ui->checkBox->checkState() == true)
     {
@@ -241,7 +243,7 @@ void HostConfig::on_pushButton_3_clicked()
         QFile input4(inter);
         if(input4.open(QIODevice::ReadOnly))
         {
-            QTextStream in(&input3);
+            QTextStream in(&input4);
             while(!in.atEnd())
             {
              QString line = in.readLine();
@@ -364,8 +366,58 @@ void HostConfig::on_pushButton_3_clicked()
             }
 
         }
+
+        input4.close();
+
+
+        //Saving
+        QFile w4(inter);
+        if(w4.open(QIODevice::ReadWrite | QIODevice::Text))
+        {
+            QTextStream stream(&w4);
+            stream << tx->toPlainText();
+            w4.flush();
+            w4.close();
+        }
+
+    }
+
+
+    //Subnet
+    QString subnet = root_path;
+    subnet.append("/conf/subnet_athena.conf");
+    tx->clear();
+    QFile input5(subnet);
+    if(input5.open(QIODevice::ReadOnly))
+    {
+        QTextStream in(&input5);
+        while(!in.atEnd())
+        {
+         QString line = in.readLine();
+         if(line.contains(tr("subnet:")))
+         {
+             tx->append(QString("%1:%2:%3").arg(ui->subnet->text(),ui->ipv6->text(),ui->ipv6->text()));
+         }
+
+        }
+
+
+
+    }
+
+    input5.close();
+
+    //Saving
+    QFile w5(subnet);
+    if(w5.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QTextStream stream(&w5);
+        stream << tx->toPlainText();
+        w5.flush();
+        w5.close();
     }
 
 
 
-}
+
+
