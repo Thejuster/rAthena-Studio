@@ -944,6 +944,9 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
     <property name="text">
      <string>Enable MySQL</string>
     </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QPushButton" name="pushButton_3">

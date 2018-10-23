@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT += network
+QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,3 +29,4 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     data.qrc
+

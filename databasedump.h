@@ -15,6 +15,9 @@ public:
     explicit DatabaseDump(QWidget *parent = 0);
     ~DatabaseDump();
     
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::DatabaseDump *ui;
 };

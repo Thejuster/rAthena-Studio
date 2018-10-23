@@ -1,11 +1,13 @@
 #include "hostconfig.h"
 #include "ui_hostconfig.h"
 #include "qfiledialog.h"
+#include "qtextedit.h"
 #include "QtNetwork/qhostinfo.h"
 #include "QtNetwork/qhostaddress.h"
 #include "QtNetwork/qnetworkinterface.h"
 #include "QtNetwork"
 #include "qtextstream.h"
+#include "qmessagebox.h"
 
 HostConfig::HostConfig(QWidget *parent) :
     QDialog(parent),
@@ -416,6 +418,10 @@ void HostConfig::on_pushButton_3_clicked()
         w5.flush();
         w5.close();
     }
+
+    QMessageBox::information(this,tr("Writing files..."),tr("Operation completed. You server are Ready to use."), QMessageBox::Ok);
+
+}
 
 
 
