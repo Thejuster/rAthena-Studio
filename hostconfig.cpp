@@ -181,6 +181,8 @@ void HostConfig::on_pushButton_3_clicked()
         w2.close();
     }
 
+
+
     //Map
 
     tx->clear();
@@ -236,7 +238,7 @@ void HostConfig::on_pushButton_3_clicked()
 
 
     //SQL Setting
-    if(ui->checkBox->checkState() == true)
+    if(ui->radioButton_2->isChecked() == true)
     {
         tx->clear();
         QString inter = root_path;
@@ -365,6 +367,8 @@ void HostConfig::on_pushButton_3_clicked()
                  continue;
              }
 
+                 tx->append(QString("%1").arg(line));
+
             }
 
         }
@@ -395,11 +399,15 @@ void HostConfig::on_pushButton_3_clicked()
         QTextStream in(&input5);
         while(!in.atEnd())
         {
+
          QString line = in.readLine();
-         if(line.contains(tr("subnet:")))
+
+
+         if(line.contains(tr("subnet:")) && !line.startsWith(tr("//")) && !line.startsWith(tr(" ")))
          {
              tx->append(QString("%1:%2:%3").arg(ui->subnet->text(),ui->ipv6->text(),ui->ipv6->text()));
          }
+
 
         }
 
@@ -418,6 +426,9 @@ void HostConfig::on_pushButton_3_clicked()
         w5.flush();
         w5.close();
     }
+
+
+
 
     QMessageBox::information(this,tr("Writing files..."),tr("Operation completed. You server are Ready to use."), QMessageBox::Ok);
 
