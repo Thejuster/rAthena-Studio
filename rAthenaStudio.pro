@@ -17,15 +17,18 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     hostconfig.cpp \
-    databasedump.cpp
+    databasedump.cpp \
+    advancesetting.cpp
 
 HEADERS  += mainwindow.h \
     hostconfig.h \
-    databasedump.h
+    databasedump.h \
+    advancesetting.h
 
 FORMS    += mainwindow.ui \
     hostconfig.ui \
-    databasedump.ui
+    databasedump.ui \
+    advancesetting.ui
 
 RESOURCES += \
     data.qrc

@@ -170,7 +170,7 @@ QComboBox::drop-down
 
 QComboBox::down-arrow
 {
-     image: url(:/down_arrow.png);
+     image: url(:/new/images/down_arrow.png);
 }
 
 QGroupBox:focus
@@ -346,7 +346,7 @@ QMainWindow::separator:hover
 QToolBar::handle
 {
      spacing: 3px; /* spacing between items in the tool bar */
-     background: url(:/images/handle.png);
+     background: url(:/new/images/handle.png);
 }
 
 QMenu::separator
@@ -466,7 +466,8 @@ QRadioButton::indicator:hover, QCheckBox::indicator:hover
 
 QCheckBox::indicator:checked
 {
-    image:url(:/images/checkbox.png);
+   
+    image:url(:/new/images/checkbox.png);
 }
 
 QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
@@ -1003,6 +1004,19 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
      <bool>false</bool>
     </property>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>350</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Advanced Setting</string>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -8,6 +8,7 @@
 #include "QtNetwork"
 #include "qtextstream.h"
 #include "qmessagebox.h"
+#include "advancesetting.h"
 
 HostConfig::HostConfig(QWidget *parent) :
     QDialog(parent),
@@ -393,29 +394,9 @@ void HostConfig::on_pushButton_3_clicked()
     QString subnet = root_path;
     subnet.append("/conf/subnet_athena.conf");
     tx->clear();
-    QFile input5(subnet);
-    if(input5.open(QIODevice::ReadOnly))
-    {
-        QTextStream in(&input5);
-        while(!in.atEnd())
-        {
 
-         QString line = in.readLine();
+    tx->append(QString("%1:%2:%3").arg(ui->subnet->text(),ui->ipv6->text(),ui->ipv6->text()));
 
-
-         if(line.contains(tr("subnet:")) && !line.startsWith(tr("//")) && !line.startsWith(tr(" ")))
-         {
-             tx->append(QString("%1:%2:%3").arg(ui->subnet->text(),ui->ipv6->text(),ui->ipv6->text()));
-         }
-
-
-        }
-
-
-
-    }
-
-    input5.close();
 
     //Saving
     QFile w5(subnet);
@@ -438,3 +419,17 @@ void HostConfig::on_pushButton_3_clicked()
 
 
 
+
+void HostConfig::on_pushButton_4_pressed()
+{
+    AdvanceSetting *setting = new AdvanceSetting;
+
+    int result = setting->exec();
+
+    if(result == QDialog::Accepted)
+    {
+       //ToDo:
+        //Implementation of Advanced Settings
+    }
+
+}
