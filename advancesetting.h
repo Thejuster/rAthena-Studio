@@ -20,6 +20,7 @@ public:
     bool md5 = false;
     QString root_path;
     void Shown();
+    void LoadSetting();
     
 private slots:
     void on_pushButton_clicked();

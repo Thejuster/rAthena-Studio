@@ -1,7 +1,10 @@
 #include "advancesetting.h"
 #include "ui_advancesetting.h"
 #include "qmessagebox.h"
-
+#include "qdatastream.h"
+#include "qtextstream.h"
+#include "qmessagebox.h"
+#include "qregexp.h"
 
 AdvanceSetting::AdvanceSetting(QWidget *parent) :
     QDialog(parent),
@@ -33,7 +36,7 @@ void AdvanceSetting::Shown()
 {
     if(root_path.length() > 0)
         {
-    QMessageBox::warning(this,tr("ok!"),root_path,QMessageBox::Ok);
+            pre_load();
         }else
         {
             QMessageBox::warning(this,tr("Warning!"),tr("Plase select first rAthena Main folder"),QMessageBox::Ok);
@@ -77,6 +80,41 @@ void AdvanceSetting::on_buttonBox_rejected()
 void AdvanceSetting::pre_load()
 {
 
+    QTextEdit *tx = new QTextEdit;
 
+    //Loading Settings
+    QString login = root_path;
+    login.append("/conf/login_athena.conf");
+
+    QFile inputFile(login);
+    if (inputFile.open(QIODevice::ReadOnly))
+    {
+       QTextStream in(&inputFile);
+       while (!in.atEnd())
+       {
+          QString line = in.readLine();
+
+          //Find consoel command
+          if(line.contains(tr("console:")) && !line.contains(tr("_")))
+          {
+
+              //Console command
+              QRegExp rx("(\\ |\\,|\\.|\\:|\\t)"); //RegEx for ' ' or ',' or '.' or ':' or '\t'
+              QStringList query = line.split(rx);
+              if(query[2].contains("on"))
+                  ui->checkBox_2->setChecked(true);
+              else
+                  ui->checkBox_2->setChecked(false);
+
+
+
+              continue;
+          }
+
+       }
+
+    }
 
 }
+
+
