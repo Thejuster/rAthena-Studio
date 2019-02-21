@@ -73,6 +73,7 @@ void AdvanceSetting::on_buttonBox_rejected()
 }
 
 
+
 void AdvanceSetting::pre_load()
 {
 
