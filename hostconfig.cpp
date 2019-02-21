@@ -424,10 +424,23 @@ void HostConfig::on_pushButton_4_pressed()
 {
     AdvanceSetting *setting = new AdvanceSetting;
 
+    //=================================
+    // Assume root path rAthena Folder
+    //=================================
+    if(root_path.length() <= 0)
+        setting->root_path = ui->lineEdit->text();
+    else
+        setting->root_path = root_path;
+
+
+    setting->Shown(); //Reading setting from files .conf
+
     int result = setting->exec();
+
 
     if(result == QDialog::Accepted)
     {
+
        //ToDo:
         //Implementation of Advanced Settings
     }

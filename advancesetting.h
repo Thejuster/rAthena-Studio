@@ -14,9 +14,12 @@ class AdvanceSetting : public QDialog
 public:
     explicit AdvanceSetting(QWidget *parent = 0);
     ~AdvanceSetting();
+    void pre_load();
     bool console_command = false;
     bool account_m_f = false;
     bool md5 = false;
+    QString root_path;
+    void Shown();
     
 private slots:
     void on_pushButton_clicked();
@@ -29,6 +32,8 @@ private slots:
 
 private:
     Ui::AdvanceSetting *ui;
+
+
 };
 
 #endif // ADVANCESETTING_H
