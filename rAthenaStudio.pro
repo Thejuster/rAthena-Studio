@@ -18,17 +18,20 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     hostconfig.cpp \
     databasedump.cpp \
-    advancesetting.cpp
+    advancesetting.cpp \
+    serverstart.cpp
 
 HEADERS  += mainwindow.h \
     hostconfig.h \
     databasedump.h \
-    advancesetting.h
+    advancesetting.h \
+    serverstart.h
 
 FORMS    += mainwindow.ui \
     hostconfig.ui \
     databasedump.ui \
-    advancesetting.ui
+    advancesetting.ui \
+    serverstart.ui
 
 RESOURCES += \
     data.qrc

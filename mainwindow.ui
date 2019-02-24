@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>646</width>
-    <height>499</height>
+    <height>515</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -533,6 +533,19 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
      </property>
     </widget>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>450</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -540,7 +553,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

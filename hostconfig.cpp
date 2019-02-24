@@ -9,6 +9,7 @@
 #include "qtextstream.h"
 #include "qmessagebox.h"
 #include "advancesetting.h"
+#include "serverstart.h"
 
 HostConfig::HostConfig(QWidget *parent) :
     QDialog(parent),
@@ -445,4 +446,17 @@ void HostConfig::on_pushButton_4_pressed()
         //Implementation of Advanced Settings
     }
 
+}
+
+
+void HostConfig::closeEvent(QCloseEvent *)
+{
+     this->accepted();
+}
+
+void HostConfig::on_pushButton_5_clicked()
+{
+       ServerStart *srv = new ServerStart;
+       srv->root_path = root_path;
+       srv->exec();
 }

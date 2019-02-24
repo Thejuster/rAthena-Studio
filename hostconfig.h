@@ -15,6 +15,7 @@ public:
     explicit HostConfig(QWidget *parent = 0);
     QString root_path;
     ~HostConfig();
+
     
 private slots:
     void on_pushButton_clicked();
@@ -24,6 +25,11 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_pressed();
+
+    void on_pushButton_5_clicked();
+
+protected:
+    void closeEvent(QCloseEvent *);
 
 private:
     Ui::HostConfig *ui;

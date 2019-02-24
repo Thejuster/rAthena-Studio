@@ -4,7 +4,8 @@
 #include "qtextstream.h"
 #include "qmessagebox.h"
 #include "qfiledialog.h"
-
+#include "qdialog.h"
+#include "qdebug.h"
 
 using namespace std;
 
@@ -35,6 +36,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
+
     HostConfig *conf = new HostConfig();
     conf->exec();
 }
