@@ -7,6 +7,8 @@
 #include "qdialog.h"
 #include "qdebug.h"
 
+#include "NPC/npceditor.h"
+
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -46,4 +48,10 @@ void MainWindow::on_pushButton_2_clicked()
 {
     DatabaseDump *db = new DatabaseDump();
     db->exec();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    NPCEditor *npc = new NPCEditor;
+    npc->show();
 }
