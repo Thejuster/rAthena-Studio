@@ -18,5 +18,5 @@ DatabaseDump::~DatabaseDump()
 
 void DatabaseDump::on_pushButton_clicked()
 {
-    QMessageBox::information(this,tr("ciao"),tr("ciao2333"),QMessageBox::Ok);
+    QMessageBox::information(this,tr(" "),tr(" "),QMessageBox::Ok);
 }
